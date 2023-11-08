@@ -1,7 +1,14 @@
-# Exp-6-Synchornous-counters - up counter and down counter 
-### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+```
+NAME : SHALINI.K
+REGISTER NO : 212222240095
+```
+# Exp-6-SYNCHORNOUS-COUNTERS - UP COUNTER AND DOWN COUNTER 
+### AIM: 
+To implement 4 bit up and down counters and validate  functionality.
+### HARDWARE REQUIRED:  
+PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED:   
+Quartus prime
 ### THEORY 
 
 ## UP COUNTER 
@@ -45,87 +52,87 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-
 ### Procedure
+```
+1.Create a new project in QuartusII software.
+2.Name the project as uc for upcounter and dc for down counter.
+3.Create a new verilog hdl file in the project file.
+4.Name the module as dc and uc for down counter and up counter.
+5.Within the module declare input and output variables.
+6.Create a loop using if-else with condition parameter as reset value.
+7.End the loop.
+8.End the module.
+```
 
-1.Create a New Project: Open Quartus and create a new project by selecting "File" > "New Project Wizard." Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
 
-2.Create a New Design File: Once the project is created, right-click on the project name in the Project Navigator and select "Add New File." Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language.
-
-3.Write the Combinational Logic Code: Open the newly created Verilog or VHDL file and write the code for your combinational logic.
-
-4.Compile the Project: To compile the project, click on "Processing" > "Start Compilation" in the menu. Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
-
-5.Analyze and Fix Errors: If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window. Review and fix any issues in your code if necessary. View the RTL diagram.
-
-6.Verification: Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF". Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All. Give the Input Combinations according to the Truth Table amd then simulate the Output Waveform.
 
 ### PROGRAM 
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: SHALINI.K
-RegisterNumber:  212222240095
+Developed by: S.JAIGANESH
+RegisterNumber: 212222240037
 */
 ```
-### UPCOUNTER: 
-
-module upcounter(A,clk);
-output reg [3:0]A;
+#### UP COUNTER:
+```
+module Counters(clk,A);
 input clk;
-always@(posedge clk)
+output reg [3:0]A;
+always @(posedge clk)
 begin
-A[0]=((((A[1])&(A[2]))&A[3])^A[0]);
-A[1]=(((A[2])&(A[3]))^A[1]);
-A[2]=((A[3])^A[2]);
-A[3]=1^A[3];
+	A[3]=(((A[0])&(A[1])&(A[2]))^A[3]);
+	A[2]=(((A[0])&(A[1]))^A[2]);
+	A[1]=(A[0])^A[1];
+	A[0]=A[0]^1;
 end
 endmodule
-
-### DOWNCOUNTER: 
-
-module downcounter(A,clk);
-output reg [3:0]A;
+```
+#### DOWN COUNTER:
+```
+module dCounters(clk,A);
 input clk;
+output reg [3:0]A;
 always@(posedge clk)
 begin
-A[3]=((((~A[2])&(~A[1]))&(~A[0]))^A[3]);
-A[2]=(((~A[1])&(~A[0]))^A[2]);
-A[1]=((~A[0])^A[1]);
-A[0]=1^A[0];
+	A[3]=(((~A[0])&(~A[1])&(~A[2]))^A[3]);
+	A[2]=(((~A[0])&(~A[1]))^A[2]);
+	A[1]=(~A[0])^A[1];
+	A[0]=1^A[0];
 end
 endmodule
 ```
 
-### RTL LOGIC UP COUNTER AND DOWN COUNTER :
+### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+#### UP COUNTER:
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/21a764f7-7623-4773-9c1a-5596fa793a0c)
 
-## UPCOUNTER RTL:
 
-![278800866-02c49678-14da-4d47-ab57-ff4b18c0475c](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/d9f9ad18-57f5-4ce0-bbea-c7da3b9b6fd2)
 
-## DOWNCOUNTER RTL:
+#### DOWN COUNTER:
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/c50e6119-92fa-4325-8d4f-48bda2c535c5)
 
-![278800890-ca828e73-d275-4114-8e48-d2f85271cf18](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/03c1cd07-c686-4407-8997-bfb5ff8965f1)
 
-### TIMING DIGRAMS FOR COUNTER  :
 
-## UPCOUNTER WAVEFORM:
+### TIMING DIAGRAMS FOR COUNTER  
+#### UP COUNTER
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/32c085a6-28b6-471b-a0f6-f4eaf69998ee)
 
-![278800916-370c4f09-7189-4e2d-a4c8-f680dd0b1f55](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/e311374a-7858-435a-a039-dbf0b7d8d9bb)
 
-## DOWNCOUNTER WAVEFORM:
+#### DOWN COUNTER
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/715ea572-9659-4786-a87d-e490376a0ffd)
 
-![278800932-80ad1d52-545d-4625-8aea-f79f9654aba0](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/8fb91e5e-25a6-414b-81a5-ecdf17e67328)
 
-### TRUTH TABLE :
 
-## UPCOUNTER TRUTHTABLE:
+### TRUTH TABLE 
+#### UP COUNTER
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/3bb80ba1-802f-4b29-9b05-e2883755bb61)
 
-![278800966-25cedb75-e0e4-4272-a89f-cc73d9d0b370](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/d4f631ff-b2cc-4b5c-83a6-d93a58d3359b)
 
-## DOWNCOUNTER TRUTHTABLE:
+#### DOWN COUNTER
+![image](https://github.com/Jaiganesh235/Exp-6-Synchornous-counters-/assets/118657189/26e364d2-d30e-48f8-9e46-5ceeb264fe4d)
 
-![278800984-da118ef7-9de1-4fba-b499-e625d837f4f6](https://github.com/shalinikannan23/Exp-7-Synchornous-counters-/assets/118656529/97b47ab5-3ccb-47c6-b519-174b77e67902)
 
-### RESULTS :
 
-Thus, The Synchornous counters of up counter and down counter circuit are studied and the truth table for different logic gates are Successfully verified.
+### RESULT
+Thus Synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
